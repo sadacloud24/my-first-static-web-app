@@ -1,26 +1,25 @@
 import React, { useState, useEffect } from 'react';
-
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min";
 
 function App() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
     (async function () {
-      debugger;
       const response = await (await fetch(`/api/message`)).json();
-      debugger;
       setData(response);
     })();
   });
 
-  return <div>
-    <div>{data?.title}</div>
+  return <div className='row form-control'>
+    <h2>{data?.title}</h2>
     {data?.items?.map(
       (p) => <>
-        <div>{p?.name}</div>
-        <div>{p?.createdDate}</div>
-        <div>{p?.country}</div>
-        <div>{p?.message}</div>
+        <div className='col-mod-12'>{p?.name}</div>
+        <div className='col-mod-12'>{p?.createdDate}</div>
+        <div className='col-mod-12'>{p?.country}</div>
+        <div className='col-mod-12'>{p?.message}</div>
       </>
     )}
   </div>;
