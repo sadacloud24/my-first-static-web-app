@@ -1,16 +1,30 @@
 import React, { useState, useEffect } from 'react';
 
+
 function App() {
-  const [data, setData] = useState('');
+  const [data, setData] = useState(null);
 
   useEffect(() => {
     (async function () {
-      const { text } = await( await fetch(`/api/message`)).json();
-      setData(text);
+      const response = await (await fetch(`/api/message`)).json();
+      setData(response);
     })();
   });
 
-  return <div>{data}</div>;
+  return <div>
+    <div>{data?.title}</div>
+    {data?.items?.map(
+      (p) => {
+        <>
+        <div>{p?.name}</div>
+        <div>{p?.createdDate}</div>
+        <div>{p?.country}</div>
+        <div>{p?.message}</div>
+      </>
+      })}
+
+    {data}
+  </div>;
 }
 
 export default App;
