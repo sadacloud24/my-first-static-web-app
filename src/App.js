@@ -6,7 +6,9 @@ function App() {
 
   useEffect(() => {
     (async function () {
+      debugger;
       const response = await (await fetch(`/api/message`)).json();
+      debugger;
       setData(response);
     })();
   });
@@ -21,8 +23,6 @@ function App() {
         <div>{p?.message}</div>
       </>
     )}
-
-    {data}
   </div>;
 }
 
