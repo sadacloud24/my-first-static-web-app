@@ -14,14 +14,13 @@ function App() {
   return <div>
     <div>{data?.title}</div>
     {data?.items?.map(
-      (p) => {
-        <>
+      (p) => <>
         <div>{p?.name}</div>
         <div>{p?.createdDate}</div>
         <div>{p?.country}</div>
         <div>{p?.message}</div>
       </>
-      })}
+    )}
 
     {data}
   </div>;
